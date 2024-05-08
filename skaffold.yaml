@@ -1,0 +1,13 @@
+apiVersion: skaffold/v4beta10
+kind: Config
+metadata:
+  name: tickets-microservice
+build:
+  artifacts:
+    - image: tickests-microservice/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - infra/k8s/auth.yaml
