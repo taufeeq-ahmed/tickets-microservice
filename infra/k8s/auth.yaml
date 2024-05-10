@@ -13,13 +13,11 @@ spec:
     spec:
       containers:
         - name: auth
-          image: tickests-microservice/auth
+          image: auth-service-image
           resources:
             limits:
               memory: "1024Mi"
               cpu: "1.0"
-          ports:
-            - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service

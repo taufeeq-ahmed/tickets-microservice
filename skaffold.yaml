@@ -4,10 +4,11 @@ metadata:
   name: tickets-microservice
 build:
   artifacts:
-    - image: tickests-microservice/auth
+    - image: auth-service-image
       context: auth
       docker:
         dockerfile: Dockerfile
 manifests:
   rawYaml:
     - infra/k8s/auth.yaml
+    - infra/k8s/ingress.yaml
