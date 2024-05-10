@@ -12,3 +12,9 @@ manifests:
   rawYaml:
     - infra/k8s/auth.yaml
     - infra/k8s/ingress.yaml
+portForward:
+  - resourceType: service
+    namespace: ingress-nginx
+    resourceName: ingress-nginx-controller
+    port: 80
+    localPort: 3000

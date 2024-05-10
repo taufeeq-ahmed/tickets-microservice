@@ -3,7 +3,7 @@ import express from "express"
 const app = express()
 
 app.get("/api/users/current-user", (req, res) => {
-    res.send("hello there")
+    res.send("current-user")
 })
 
 app.listen(3000, () => {

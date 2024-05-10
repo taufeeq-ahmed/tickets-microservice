@@ -1,15 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-service
-  
+  name: auth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  labels:
+    name: auth
 spec:
   rules:
     - host: open-ticketz.dev
       http:
         paths:
-          - path: /api/users/?(.*)
-            pathType: Prefix
+          - pathType: Prefix
+            path: /api/users/?(.*)
             backend:
               service:
                 name: auth
