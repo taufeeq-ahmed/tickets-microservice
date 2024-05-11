@@ -17,7 +17,7 @@ app.use(signupRouter)
 
 app.use(errorHandler)
 
-app.get("*", () => {
+app.all("*", () => {
     throw new NotFoundError()
 })
 
