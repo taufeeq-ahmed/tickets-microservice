@@ -1,9 +1,11 @@
 import { ValidationError } from "express-validator";
 import CustomError from "./custom-error";
+import HttpStatusCodes from "../utils/status-codes";
 
 class RequestValidationError extends CustomError {
     errors: ValidationError[]
-    statusCode = 400
+    statusCode = HttpStatusCodes.BAD_REQUEST
+
     constructor(errors: ValidationError[]) {
         super()
         this.errors = errors

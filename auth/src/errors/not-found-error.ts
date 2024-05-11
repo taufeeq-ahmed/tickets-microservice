@@ -1,7 +1,8 @@
+import HttpStatusCodes from "../utils/status-codes";
 import CustomError from "./custom-error";
 
 class NotFoundError extends CustomError {
-    statusCode = 404
+    statusCode = HttpStatusCodes.NOT_FOUND
 
     constructor() {
         super()
