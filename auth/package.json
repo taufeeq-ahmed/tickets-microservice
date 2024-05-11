@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",

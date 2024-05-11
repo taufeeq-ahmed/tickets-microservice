@@ -4,7 +4,9 @@ import bodyParser from 'body-parser'
 
 import { currentUserRouter, signinRouter, signoutRouter, signupRouter } from "./routes"
 import errorHandler from "./middlewares/error-handler"
-import { NotFoundError } from "./errors"
+
+import connectDatabase from "./db/connect-database"
+import NotFoundError from "./errors/not-found-error"
 
 const app = express()
 
@@ -22,6 +24,11 @@ app.all("*", async () => {
     throw new NotFoundError()
 })
 
+const startDb = async () => {
+    await connectDatabase()
+}
+startDb()
+
 app.listen(3000, () => {
-    console.log("🟢🟢 auth-server up on port : 3000");
+    console.log("✅ auth-server up on port : 3000");
 })
