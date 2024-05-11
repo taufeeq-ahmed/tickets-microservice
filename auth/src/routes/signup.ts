@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator"
+import { RequestValidationError } from "../errors";
+
 
 const router = express.Router()
 
@@ -17,7 +19,7 @@ router.post("/api/users/signup", validatorMidleware, (req: Request, res: Respons
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
-        return res.status(400).send(errors.array())
+        throw new RequestValidationError(errors.array())
     }
 
     res.send("sign-up")
