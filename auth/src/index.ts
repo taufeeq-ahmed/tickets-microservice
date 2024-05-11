@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 
 import { currentUserRouter, signinRouter, signoutRouter, signupRouter } from "./routes"
 import errorHandler from "./middlewares/error-handler"
+import { NotFoundError } from "./errors"
 
 const app = express()
 
@@ -15,6 +16,10 @@ app.use(signoutRouter)
 app.use(signupRouter)
 
 app.use(errorHandler)
+
+app.get("*", () => {
+    throw new NotFoundError()
+})
 
 app.listen(3000, () => {
     console.log("🟢🟢 auth-server up on port : 3000");
