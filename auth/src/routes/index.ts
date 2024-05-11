@@ -1,7 +1,7 @@
 import { currentUserRouter } from "./current-user";
-import { signinRouter } from "./sign-in";
-import { signoutRouter } from "./sign-out";
-import { signupRouter } from "./sign-up";
+import { signinRouter } from "./signin";
+import { signoutRouter } from "./signout";
+import { signupRouter } from "./signup";
 
 export {
     signinRouter, currentUserRouter, signoutRouter, signupRouter
