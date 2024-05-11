@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator"
-import { RequestValidationError } from "../errors";
+import { DatabaseConnectionError, RequestValidationError } from "../errors";
 
 
 const router = express.Router()
