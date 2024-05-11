@@ -7,7 +7,7 @@ class BadRequestError extends CustomError {
 
     constructor(message: string) {
         super()
-        this.reason = this.message
+        this.reason = message
         Object.setPrototypeOf(this, BadRequestError.prototype)
     }
 

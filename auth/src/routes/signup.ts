@@ -29,10 +29,9 @@ router.post("/api/users/signup", validatorMidleware, async (req: Request, res: R
         throw new BadRequestError("user already exists with email: " + email)
 
     const newUser = User.build({ email, password })
-
     await newUser.save()
 
-    res.status(HttpStatusCodes.CREATED)
+    res.status(HttpStatusCodes.CREATED).send({ message: "user created" })
 })
 
 export { router as signupRouter }

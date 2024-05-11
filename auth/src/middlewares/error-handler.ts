@@ -4,6 +4,7 @@ import HttpStatusCodes from "../utils/status-codes";
 
 
 const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
+    console.log("error", err)
     if (err instanceof CustomError) {
         return res.status(err.statusCode).send(err.serializeErrors());
     }
