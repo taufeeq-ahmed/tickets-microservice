@@ -4,6 +4,7 @@ import { RequestValidationError } from "../errors";
 import User from "../models/user";
 import BadRequestError from "../errors/bad-request-error";
 import HttpStatusCodes from "../utils/status-codes";
+import { getHashedPassword } from "../helpers/password";
 
 const router = express.Router()
 
@@ -22,7 +23,8 @@ const signupUser = async (email: string, password: string) => {
     if (existingUser)
         throw new BadRequestError("user already exists with email: " + email)
 
-    const newUser = User.build({ email, password })
+    const hashedPassword = await getHashedPassword(password)
+    const newUser = User.build({ email, password: hashedPassword })
     await newUser.save()
 }
 
