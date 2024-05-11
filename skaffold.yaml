@@ -10,7 +10,8 @@ build:
         dockerfile: Dockerfile
 manifests:
   rawYaml:
-    - infra/k8s/auth.yaml
+    - infra/k8s/auth-service/service.yaml
+    - infra/k8s/auth-service/mongodb.yaml
     - infra/k8s/ingress.yaml
 portForward:
   - resourceType: service

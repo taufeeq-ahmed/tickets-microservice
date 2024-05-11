@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-database
+spec:
+  selector:
+    matchLabels:
+      app: auth-database
+  template:
+    metadata:
+      labels:
+        app: auth-database
+    spec:
+      containers:
+        - name: auth-database
+          image: mongo
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-database
+spec:
+  selector:
+    app: auth-database
+  ports:
+    - port: 27017
+      targetPort: 27017
