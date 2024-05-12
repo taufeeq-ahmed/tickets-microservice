@@ -18,7 +18,7 @@ spec:
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
-                  name: jwt-secret
+                  name: auth-secret
                   key: JWT_KEY
           resources:
             limits:
@@ -33,5 +33,7 @@ spec:
   selector:
     app: auth
   ports:
-    - port: 3000
+    - name: auth
+      protocol: TCP
+      port: 3000
       targetPort: 3000
