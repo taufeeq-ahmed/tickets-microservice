@@ -9,7 +9,7 @@ metadata:
     name: auth
 spec:
   rules:
-    - host: open-ticketz.dev
+    - host: ticketz.dev
       http:
         paths:
           - pathType: Prefix
