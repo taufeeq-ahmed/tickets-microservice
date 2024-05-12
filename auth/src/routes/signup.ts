@@ -4,7 +4,7 @@ import { RequestValidationError } from "../errors";
 import User from "../models/user";
 import BadRequestError from "../errors/bad-request-error";
 import HttpStatusCodes from "../utils/status-codes";
-import { getHashedPassword } from "../helpers/password";
+import jwt from 'jsonwebtoken';
 
 const router = express.Router()
 
@@ -25,6 +25,13 @@ const signupUser = async (email: string, password: string) => {
 
     const newUser = User.build({ email, password })
     await newUser.save()
+
+    const userToken = jwt.sign({
+        id: newUser.id,
+        email: newUser.email
+    }, process.env.JWT_KEY!)
+
+    return userToken
 }
 
 router.post("/api/users/signup", validatorMidleware, async (req: Request, res: Response) => {
@@ -33,7 +40,11 @@ router.post("/api/users/signup", validatorMidleware, async (req: Request, res: R
         throw new RequestValidationError(errors.array())
 
     const { email, password } = req.body
-    await signupUser(email, password)
+    const userToken = await signupUser(email, password)
+
+    req.session = {
+        jwt: userToken
+    }
 
     res.status(HttpStatusCodes.CREATED).send({ message: "user created" })
 })

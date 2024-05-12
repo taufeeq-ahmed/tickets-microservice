@@ -24,6 +24,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    toJSON: {
+        // this is view level logic
+        transform(doc, ret) {
+            ret.id = ret._id
+            delete ret._id
+            delete ret.password
+        },
+        versionKey: false
+    }
 })
 
 userSchema.statics.build = function (props: UserProps): UserDoc {
