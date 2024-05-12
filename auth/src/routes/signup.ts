@@ -23,8 +23,7 @@ const signupUser = async (email: string, password: string) => {
     if (existingUser)
         throw new BadRequestError("user already exists with email: " + email)
 
-    const hashedPassword = await getHashedPassword(password)
-    const newUser = User.build({ email, password: hashedPassword })
+    const newUser = User.build({ email, password })
     await newUser.save()
 }
 

@@ -7,11 +7,18 @@ import errorHandler from "./middlewares/error-handler"
 
 import connectDatabase from "./db/connect-database"
 import NotFoundError from "./errors/not-found-error"
+import cookieSession from "cookie-session"
 
 const app = express()
 
+app.set('trust proxy', true)
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieSession({
+    signed: false,
+    secure: true
+}))
 
 app.use(currentUserRouter)
 app.use(signinRouter)
