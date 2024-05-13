@@ -34,15 +34,20 @@ const signupUser = async (email: string, password: string) => {
     return userToken
 }
 
-router.post("/api/users/signup", validatorMidleware, validateRequest, async (req: Request, res: Response) => {
-    const { email, password } = req.body
-    const userToken = await signupUser(email, password)
+router.post("/api/users/signup",
+    validatorMidleware,
+    validateRequest,
 
-    req.session = {
-        jwt: userToken
+    async (req: Request, res: Response) => {
+        const { email, password } = req.body
+        const userToken = await signupUser(email, password)
+
+        req.session = {
+            jwt: userToken
+        }
+
+        res.status(HttpStatusCodes.CREATED).send({ message: "user created" })
     }
-
-    res.status(HttpStatusCodes.CREATED).send({ message: "user created" })
-})
+)
 
 export { router as signupRouter }

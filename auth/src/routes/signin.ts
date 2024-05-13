@@ -35,15 +35,21 @@ const signinUser = async (email: string, password: string) => {
     return { user, userToken }
 }
 
-router.post("/api/users/signin", validatorMidleware, validateRequest, async (req: Request, res: Response) => {
-    const { email, password } = req.body
-    const { user, userToken } = await signinUser(email, password)
+router.post(
+    "/api/users/signin",
+    validatorMidleware,
+    validateRequest,
 
-    req.session = {
-        jwt: userToken
+    async (req: Request, res: Response) => {
+        const { email, password } = req.body
+        const { user, userToken } = await signinUser(email, password)
+
+        req.session = {
+            jwt: userToken
+        }
+
+        res.status(200).send(user)
     }
-
-    res.status(200).send(user)
-})
+)
 
 export { router as signinRouter }
