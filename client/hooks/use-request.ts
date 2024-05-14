@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+"use client"
+
+import { useState } from "react"
 import { Method, AxiosError } from "axios";
 import requestServer from "./request";
 
@@ -8,21 +10,23 @@ interface UseRequestProps {
     body?: any
     params?: any
     headers?: any
-    immediateRequest?: boolean
 }
 
-const useRequest = async (
-    { url, method, body, params, headers, immediateRequest = false }: UseRequestProps
-) => {
-    const [data, setData] = useState({})
-    const [errors, setErrors] = useState<AxiosError | null>(null)
-    const [isLoading, setIsLoading] = useState(false)
+interface ValidationError {
+    message: string,
+    field: string
+}
 
-    useEffect(() => {
-        if (immediateRequest) {
-            trigger({ url, method, body, params, headers });
-        }
-    }, []);
+type ValidationAxiosError = AxiosError & {
+    response: {
+        data: ValidationError[]
+    }
+}
+
+const useRequest = () => {
+    const [data, setData] = useState({})
+    const [errors, setErrors] = useState<ValidationError[]>([])
+    const [isLoading, setIsLoading] = useState(false)
 
     const trigger = async (
         { url, method, body, params, headers }: UseRequestProps
@@ -38,9 +42,9 @@ const useRequest = async (
                 headers
             });
             setData(response.data);
-        } catch (err) {
-            // setErrors(err.response ? err.response.data : err);
-            console.log(err)
+        } catch (error) {
+            const axiosError = error as ValidationAxiosError
+            setErrors(axiosError.response?.data)
         }
 
         setIsLoading(false)

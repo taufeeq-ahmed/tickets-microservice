@@ -8,6 +8,7 @@ import errorHandler from "./middlewares/error-handler"
 import connectDatabase from "./db/connect-database"
 import NotFoundError from "./errors/not-found-error"
 import cookieSession from "cookie-session"
+import Logger from "./utils/logger"
 
 const app = express()
 
@@ -37,5 +38,5 @@ const startDb = async () => {
 startDb()
 
 app.listen(3000, () => {
-    console.log("✅ auth-server up on port : 3000");
+    Logger.success("auth-server up on port : 3000");
 })
