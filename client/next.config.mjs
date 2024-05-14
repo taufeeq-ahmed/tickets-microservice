@@ -2,8 +2,10 @@
 import path from "path"
 
 const nextConfig = {
-    webpack: (config) => {
-        config.resolve.alias['@'] = path.resolve(__dirname);
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            config.resolve.alias['@'] = path.join(process.cwd(), '.');
+        }
         return config;
     },
 };
