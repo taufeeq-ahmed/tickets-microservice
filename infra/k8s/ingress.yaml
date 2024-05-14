@@ -19,3 +19,10 @@ spec:
                 name: auth
                 port:
                   number: 3000
+          - pathType: Prefix
+            path: /?(.*)
+            backend:
+              service:
+                name: client
+                port:
+                  number: 3000

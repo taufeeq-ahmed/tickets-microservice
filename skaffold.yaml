@@ -8,9 +8,12 @@ build:
       context: auth
       docker:
         dockerfile: Dockerfile
+    - image: client-service-image
+      context: client
+      docker:
+        dockerfile: Dockerfile
+
 manifests:
   rawYaml:
-    - infra/k8s/auth-service/service.yaml
-    - infra/k8s/auth-service/mongodb.yaml
-    - infra/k8s/auth-service/secret.yaml
+    - infra/k8s/**/*.yaml
     - infra/k8s/ingress.yaml
