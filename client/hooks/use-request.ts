@@ -27,7 +27,7 @@ const useRequest = <T>(): UseRequestReturnType<T> => {
             setData(response.data);
             setError(null);
         } catch (error) {
-            setError(error);
+            setError(error as AxiosError<T>);
         } finally {
             setLoading(false);
         }
