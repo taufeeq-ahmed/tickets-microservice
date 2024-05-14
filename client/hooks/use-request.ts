@@ -15,13 +15,14 @@ const useRequest = <T>(): UseRequestReturnType<T> => {
     const [error, setError] = useState<AxiosError<T> | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const trigger = async (url: string, method: Method, body?: any) => {
+    const trigger = async (url: string, method: Method, body?: any, params?: any) => {
         setLoading(true);
         try {
             const response: AxiosResponse<T> = await request.request<T>({
                 url,
                 method,
                 data: body,
+                params: params
             });
             setData(response.data);
             setError(null);
