@@ -1,5 +1,5 @@
-// import { Button } from '@/components/ui/button'
-// import { Input } from "@/components/ui/input"
+import { Button } from '@/components/ui/button'
+import { Input } from "@/components/ui/input"
 
 import Image from 'next/image'
 import React from 'react'
@@ -16,14 +16,14 @@ function SignupForm() {
                 height={100}
             />
             <form className='w-full p-20 py-2 flex flex-col gap-4'>
-                {/* <Input
+                <Input
                     type='email'
                     placeholder='Email'
                 />
                 <Input
                     type='password'
                     placeholder='Password'
-                /> */}
+                />
             </form>
         </div>
     )
