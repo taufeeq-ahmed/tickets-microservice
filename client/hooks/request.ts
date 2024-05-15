@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const requestServer = axios.create({
-    baseURL: 'https://ticketz.dev',
+    baseURL: 'https://api.ticketz.dev',
 });
 
 requestServer.interceptors.request.use(

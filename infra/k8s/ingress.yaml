@@ -8,8 +8,12 @@ metadata:
   labels:
     name: auth
 spec:
+  tls:
+    - hosts:
+        - api.ticketz.dev
+      secretName: tls-secret
   rules:
-    - host: ticketz.dev
+    - host: api.ticketz.dev
       http:
         paths:
           - pathType: Prefix
@@ -19,6 +23,10 @@ spec:
                 name: auth
                 port:
                   number: 3000
+
+    - host: ticketz.dev
+      http:
+        paths:
           - pathType: Prefix
             path: /?(.*)
             backend:
