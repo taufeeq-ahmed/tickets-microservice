@@ -39,7 +39,8 @@ const useRequest = () => {
                 method,
                 data: body,
                 params,
-                headers
+                headers,
+                withCredentials: true
             });
             setData(response.data);
         } catch (error) {
