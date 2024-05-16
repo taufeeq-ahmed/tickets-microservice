@@ -14,7 +14,11 @@ const app = express()
 
 app.set('trust proxy', true)
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://ticketz.dev',
+    credentials: true
+}));
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieSession({
