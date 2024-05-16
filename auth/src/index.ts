@@ -9,11 +9,12 @@ import connectDatabase from "./db/connect-database"
 import NotFoundError from "./errors/not-found-error"
 import cookieSession from "cookie-session"
 import Logger from "./utils/logger"
-
+const cors = require("cors")
 const app = express()
 
 app.set('trust proxy', true)
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieSession({
