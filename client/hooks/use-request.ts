@@ -43,9 +43,11 @@ const useRequest = () => {
                 withCredentials: true
             });
             setData(response.data);
+            setErrors([])
         } catch (error) {
             const axiosError = error as ValidationAxiosError
             setErrors(axiosError.response?.data)
+            setData({})
         }
 
         setIsLoading(false)
