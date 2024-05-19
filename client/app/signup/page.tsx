@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import useRequest from '@/hooks/use-request'
 import Logger from '@/utils/logger'
 import { useRouter } from 'next/navigation'
-import React, { FormEvent } from 'react'
+import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 
 type Inputs = {
