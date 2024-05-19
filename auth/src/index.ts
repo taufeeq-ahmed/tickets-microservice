@@ -23,7 +23,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieSession({
     signed: false,
-    secure: true
+    secure: true,
+    domain: "ticketz.dev"
 }))
 
 app.use(currentUserRouter)
