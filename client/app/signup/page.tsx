@@ -3,6 +3,8 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import useRequest from '@/hooks/use-request'
+import Logger from '@/utils/logger'
+import { useRouter } from 'next/navigation'
 import React, { FormEvent } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 
@@ -20,15 +22,22 @@ function SignUp() {
 
     const { trigger, errors } = useRequest()
 
+    const router = useRouter()
+
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         const { email, password } = data
-        await trigger({
-            url: '/api/users/signup',
-            method: "POST",
-            body: {
-                email, password
-            }
-        })
+        try {
+            await trigger({
+                url: '/api/users/signup',
+                method: "POST",
+                body: {
+                    email, password
+                }
+            })
+            router.push("/")
+        } catch (err) {
+            Logger.failure(err as Error)
+        }
     }
 
     return (
