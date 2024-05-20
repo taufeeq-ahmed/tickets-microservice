@@ -2,7 +2,8 @@
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import useRequest from '@/hooks/use-request'
+import useRequest from '@/request/use-request'
+
 import Logger from '@/utils/logger'
 import { useRouter } from 'next/navigation'
 import React from 'react'
