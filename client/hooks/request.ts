@@ -1,7 +1,13 @@
+import isServer from "@/utils/is-server";
 import axios from "axios";
 
+const SERVER_URL = 'https://api.ticketz.dev'
+const SERVER_INGRESS_URL = ""
+
+const BASE_URL = isServer() ? SERVER_INGRESS_URL : SERVER_URL
+
 const requestServer = axios.create({
-    baseURL: 'https://api.ticketz.dev',
+    baseURL: BASE_URL,
 });
 
 requestServer.interceptors.request.use(
