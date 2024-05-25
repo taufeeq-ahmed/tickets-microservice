@@ -1,5 +1,6 @@
+import Logger from "@maestro-ticketz/common/build/utils/logger";
 import mongoose from "mongoose"
-import Logger from "../utils/logger";
+
 
 const connectDatabase = async () => {
     try {

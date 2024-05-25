@@ -2,10 +2,11 @@ import express, { Request, Response } from "express";
 import { body } from "express-validator"
 import User from "../models/user";
 
-import HttpStatusCodes from "../utils/status-codes";
+
 import jwt from 'jsonwebtoken';
 import BadRequestError from "@maestro-ticketz/common/build/errors/bad-request-error";
 import validateRequest from "@maestro-ticketz/common/build/middlewares/request-validator";
+import HttpStatusCodes from "@maestro-ticketz/common/build/utils/status-codes";
 
 
 const router = express.Router()

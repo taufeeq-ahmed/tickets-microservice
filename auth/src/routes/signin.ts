@@ -7,6 +7,7 @@ import { isValidPassword } from "../helpers/password";
 import jwt from 'jsonwebtoken';
 import BadRequestError from "@maestro-ticketz/common/build/errors/bad-request-error";
 import validateRequest from "@maestro-ticketz/common/build/middlewares/request-validator";
+import HttpStatusCodes from "@maestro-ticketz/common/build/utils/status-codes";
 
 const router = express.Router()
 
@@ -50,7 +51,7 @@ router.post(
             jwt: userToken
         }
 
-        res.status(200).send(user)
+        res.status(HttpStatusCodes.OK).send(user)
     }
 )
 
