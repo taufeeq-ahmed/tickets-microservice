@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styles from "./navbar.module.css"
 import Link from 'next/link'
 import Cookies from 'universal-cookie';
+import Logger from '@/utils/logger';
 
 function Navbar() {
     const [isLoggedin, setIsLoggedIn] = useState(false)
