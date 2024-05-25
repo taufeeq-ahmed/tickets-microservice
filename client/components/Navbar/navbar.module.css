@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #f0f0f0;
+    padding: 24px;
+    display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 16px;
+
+    .links {
+        display: flex;
+        gap: 12px;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+}
+
+.navbar :global(a:-webkit-any-link) {
+    text-decoration: none;
+    color: black;
+}
