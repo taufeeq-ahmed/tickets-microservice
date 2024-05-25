@@ -1,6 +1,8 @@
+import currentUserExtractor from "@maestro-ticketz/common/build/middlewares/current-user-extractor";
+import validateAuth from "@maestro-ticketz/common/build/middlewares/vaidate-auth";
 import express, { Request, Response } from "express";
-import currentUserExtractor from "../middlewares/current-user-extractor";
-import validateAuth from "../middlewares/vaidate-auth";
+
+
 
 const router = express.Router()
 

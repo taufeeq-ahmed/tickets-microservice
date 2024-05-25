@@ -3,12 +3,15 @@ import "express-async-errors"
 import bodyParser from 'body-parser'
 
 import { currentUserRouter, signinRouter, signoutRouter, signupRouter } from "./routes"
-import errorHandler from "./middlewares/error-handler"
+
 
 import connectDatabase from "./db/connect-database"
-import NotFoundError from "./errors/not-found-error"
+
 import cookieSession from "cookie-session"
-import Logger from "./utils/logger"
+import errorHandler from "@maestro-ticketz/common/build/middlewares/error-handler"
+import NotFoundError from "@maestro-ticketz/common/build/errors/not-found-error"
+import Logger from "@maestro-ticketz/common/build/utils/logger"
+
 const cors = require("cors")
 const app = express()
 
