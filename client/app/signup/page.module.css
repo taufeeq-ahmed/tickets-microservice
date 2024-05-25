@@ -1,0 +1,25 @@
+.signup_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .signup_form {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        gap: 12px;
+
+        .input {
+            width: 100%;
+            height: 36px;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid grey
+        }
+
+        .signup_button {
+            background-color: black;
+            color: #fff;
+        }
+    }
+}
