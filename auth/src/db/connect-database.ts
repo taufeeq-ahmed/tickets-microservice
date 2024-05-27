@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 
 const connectDatabase = async () => {
     try {
-        await mongoose.connect('mongodb://auth-database:27017/auth')
+        await mongoose.connect(process.env.MONGO_URI!)
         Logger.success("database connection success");
     } catch (error) {
         Logger.failure("database connection failed");
