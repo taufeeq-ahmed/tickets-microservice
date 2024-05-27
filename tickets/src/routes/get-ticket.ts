@@ -25,4 +25,4 @@ router.get("/api/tickets/:id",
     }
 )
 
-export { router as getTicketRouter }
+export { router as getTicketRouter, getTicket }

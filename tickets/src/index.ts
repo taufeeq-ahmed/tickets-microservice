@@ -13,6 +13,7 @@ import Logger from "@maestro-ticketz/common/build/utils/logger"
 import { createTicketRouter } from "./routes/create-ticket"
 import { listTicketsRouter } from "./routes/list-tickets"
 import { getTicketRouter } from "./routes/get-ticket"
+import { updateTicketRouter } from "./routes/update-ticket"
 
 const cors = require("cors")
 const app = express()
@@ -35,6 +36,7 @@ app.use(cookieSession({
 app.use(createTicketRouter)
 app.use(getTicketRouter)
 app.use(listTicketsRouter)
+app.use(updateTicketRouter)
 
 app.use(errorHandler)
 
