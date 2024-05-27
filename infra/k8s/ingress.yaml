@@ -27,6 +27,17 @@ spec:
                 name: auth
                 port:
                   number: 3000
+    
+    - host: api.ticketz.dev
+      http:
+        paths:
+          - pathType: Prefix
+            path: /api/tickets/?(.*)
+            backend:
+              service:
+                name: tickets
+                port:
+                  number: 3000
 
     - host: ticketz.dev
       http:
