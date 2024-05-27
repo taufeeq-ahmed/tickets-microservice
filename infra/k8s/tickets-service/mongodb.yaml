@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets-database
+spec:
+  selector:
+    matchLabels:
+      app: tickets-database
+  template:
+    metadata:
+      labels:
+        app: tickets-database
+    spec:
+      containers:
+        - name: tickets-database
+          image: mongo
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tickets-database
+spec:
+  selector:
+    app: tickets-database
+  ports:
+    - port: 27017
+      targetPort: 27017

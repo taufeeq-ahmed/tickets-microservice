@@ -8,6 +8,10 @@ build:
       context: auth
       docker:
         dockerfile: Dockerfile
+    - image: tickets-service-image
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
     - image: client-service-image
       context: client
       docker:

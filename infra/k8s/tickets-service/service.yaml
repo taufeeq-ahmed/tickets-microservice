@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets
+spec:
+  selector:
+    matchLabels:
+      app: tickets
+  template:
+    metadata:
+      labels:
+        app: tickets
+    spec:
+      containers:
+        - name: tickets
+          image: tickets-service-image
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: tickets-secret
+                  key: JWT_KEY
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "1.0"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tickets
+spec:
+  selector:
+    app: tickets
+  ports:
+    - name: tickets
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
