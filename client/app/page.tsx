@@ -1,16 +1,12 @@
-"use client"
-
-import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import Cookies from "universal-cookie";
+import { cookies } from 'next/headers'
 
 export default function Home() {
-  const [isLoggedin, setIsLoggedIn] = useState(false)
+  let isLoggedin = false
 
-  useEffect(() => {
-    const cookies = new Cookies();
-    setIsLoggedIn(cookies.get('session'))
-  }, [])
+  const cookieStore = cookies()
+  const session = cookieStore.get('session')
+  if (session) isLoggedin = true
 
   return (
     <main className={styles.main}>

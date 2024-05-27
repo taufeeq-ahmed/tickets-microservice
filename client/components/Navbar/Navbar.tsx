@@ -1,18 +1,15 @@
-"use client"
-
 import React, { useEffect, useState } from 'react'
 import styles from "./navbar.module.css"
 import Link from 'next/link'
-import Cookies from 'universal-cookie';
-import Logger from '@/utils/logger';
+import { cookies } from 'next/headers'
+
 
 function Navbar() {
-    const [isLoggedin, setIsLoggedIn] = useState(false)
+    let isLoggedin = false
 
-    useEffect(() => {
-        const cookies = new Cookies();
-        setIsLoggedIn(cookies.get('session'))
-    }, [])
+    const cookieStore = cookies()
+    const session = cookieStore.get('session')
+    if (session) isLoggedin = true
 
     return (
         <div className={styles.navbar}>
