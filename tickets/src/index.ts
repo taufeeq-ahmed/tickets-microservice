@@ -10,6 +10,7 @@ import cookieSession from "cookie-session"
 import errorHandler from "@maestro-ticketz/common/build/middlewares/error-handler"
 import NotFoundError from "@maestro-ticketz/common/build/errors/not-found-error"
 import Logger from "@maestro-ticketz/common/build/utils/logger"
+import { createTicketRouter } from "./routes/create-ticket"
 
 const cors = require("cors")
 const app = express()
@@ -29,6 +30,7 @@ app.use(cookieSession({
     domain: "ticketz.dev"
 }))
 
+app.use(createTicketRouter)
 
 app.use(errorHandler)
 

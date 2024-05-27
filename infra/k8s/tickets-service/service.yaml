@@ -20,6 +20,11 @@ spec:
                 secretKeyRef:
                   name: tickets-secret
                   key: JWT_KEY
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: tickets-secret
+                  key: MONGO_URI
           resources:
             limits:
               memory: "1024Mi"
